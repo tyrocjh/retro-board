@@ -1,19 +1,43 @@
 # retro-board
 
-Q:
-1.module.hot works or not?
-2.it seems that after changing the code, the page will refresh?
 
-technologies:
-react
-redux
-react-router
-react-toolbox
-flex
-es6
-webpack
-express
+## questions
 
-how to use:
-1.dev: npm run dev
-2.prod: npm run postinstall -> npm start
+* module.hot works or not?
+* it seems that after changing the code, the page will refresh?
+
+
+## technologies
+
+* [react](https://github.com/facebook/react)
+* [redux](https://github.com/reactjs/redux)
+* [reselect](https://github.com/reactjs/reselect)
+* [react-router](https://github.com/ReactTraining/react-router)
+* [react-toolbox](http://react-toolbox.com/#/)
+* [react hot loader 3](https://github.com/gaearon/react-hot-loader/tree/next/docs)
+* [Webpack](https://github.com/webpack/webpack)
+* [Modular CSS](https://github.com/css-modules/css-modules)
+* [flex](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+* [es6](http://es6.ruanyifeng.com/)
+* [express](http://expressjs.com/en/4x/api.html)
+* [MongoDB](https://www.mongodb.org/)
+* [Socket IO](http://socket.io)
+
+
+## how to run for development
+
+* `git clone` to clone this repository
+* `npm i` to install the dependencies
+* open two terminals
+* `npm run start-ui` on the first terminal to run webpack
+* `npm run start-server` on the second terminal to start the server
+* open your browser on [http://localhost:8081](http://localhost:8081)
+
+
+## how to run for production
+
+* `git clone` to clone this repository
+* `npm i` to install the dependencies
+* `npm run postinstall` to build everything
+* `npm run start` to run the server
+* open your browser on [http://localhost:8081](http://localhost:8081)
