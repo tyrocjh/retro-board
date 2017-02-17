@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
+import { Layout, Panel } from 'react-toolbox';
 
-export default class Layout extends Component {
+import Header from '../components/header/Header';
+
+export default class LayoutContainer extends Component {
   render() {
     return (
-  		<div id="app-main">
-        {React.cloneElement(this.props.children, { key: location.pathname })}
-  		</div>
+      <Layout>
+        <Panel>
+        	<Header />
+          {React.cloneElement(this.props.children, { key: location.pathname })}
+        </Panel>
+      </Layout>
     )
   }
 }

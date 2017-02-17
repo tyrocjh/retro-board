@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import { fetchHome } from '../actions/home';
 
-import backgroundImage from '../../images/avatar.jpg';
 import './Home.scss';
 
 export default class Home extends Component {
@@ -22,8 +21,6 @@ export default class Home extends Component {
 		return (
 			<div id="home-page">
 				<h1>Home Page.</h1>
-	      <img src={backgroundImage} alt="cat" />
-	      <div className="bg-avatar"></div>
 	      <p>{home.data}</p>
 			</div>
 		)
