@@ -20,7 +20,6 @@ export default class Home extends Component {
 
 		return (
 			<div id="home-page">
-				<h1>Home Page.</h1>
 	      <p>{home.data}</p>
 			</div>
 		)

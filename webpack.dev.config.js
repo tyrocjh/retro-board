@@ -31,7 +31,7 @@ module.exports = {
       },
       {
         test: /\.(css|scss)$/,
-        loader: 'style!css?sourceMap&modules!sass'
+        loader: 'style!css?sourceMap&modules&localIdentName=[name]__[local]___[hash:base64:5]!sass'
       },
       {
         test: /\.(ttf|eot|svg|woff|woff2)/,

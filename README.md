@@ -17,7 +17,7 @@
 * [react hot loader 3](https://github.com/gaearon/react-hot-loader/tree/next/docs)
 * [Webpack](https://github.com/webpack/webpack)
 * [Modular CSS](https://github.com/css-modules/css-modules)
-* [flex](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+* [flex](https://zhuanlan.zhihu.com/p/25303493)
 * [es6](http://es6.ruanyifeng.com/)
 * [express](http://expressjs.com/en/4x/api.html)
 * [MongoDB](https://www.mongodb.org/)

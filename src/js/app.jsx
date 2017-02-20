@@ -9,6 +9,8 @@ import LayoutContainer from './containers/LayoutContainer';
 import HomeContainer from './containers/HomeContainer';
 import NotFound from './components/NotFound';
 
+import 'react-toolbox/lib/commons';
+
 const store = configureStore();
 
 export default class App extends Component {
