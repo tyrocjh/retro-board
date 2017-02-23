@@ -1,9 +1,19 @@
 .header {
 	background-color: #455a64;
+	justify-content: space-between;
+}
+
+.homeLink {
+	flex-direction: column;
+	align-items: flex-start;
+
+	&:not(.active) {
+		opacity: 1;
+	}
 }
 
 .title {
-	font-size: 1.6rem;	
+	font-size: 1.6rem;
 }
 
 .subTitle {

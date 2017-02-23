@@ -1,0 +1,13 @@
+.tools {
+	> a[data-react-toolbox="link"] {
+		color: white;
+    opacity: 1;
+	}
+	
+  .user {
+    > abbr {
+      margin-right: 1rem;
+    	text-transform: lowercase;
+    }
+  }
+}
