@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { Card, CardMedia, CardText } from 'react-toolbox';
 
+import Banner from './draw/Banner';
 import { fetchHome } from '../actions/home';
 
-import './Home.scss';
+import styles from './Home.scss';
 
 export default class Home extends Component {
 	static propTypes = {
@@ -19,8 +21,17 @@ export default class Home extends Component {
 		const { home } = this.props;
 
 		return (
-			<div id="home-page">
-	      <p>{home.data}</p>
+			<div className={styles.content}>
+				<div style={ { padding: '20px' } }>
+				  <Card raised>
+				    <CardMedia>
+				    	<Banner />
+				    </CardMedia>
+				    <CardText>
+				    	{home.data}
+				    </CardText>
+				  </Card>
+				</div>
 			</div>
 		)
 	}
