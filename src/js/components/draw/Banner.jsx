@@ -10,7 +10,7 @@ export default class Banner extends Component {
 				<div className={styles.cards}>
 					<i className={classNames(styles.icon, 'material-icons')}>question_answer</i>
 				</div>
-				<h2>tyro-retroboard</h2>
+				<h2 className={styles.title}>tyro-retroboard</h2>
 			</div>
 		)
 	}

@@ -29,12 +29,16 @@ module.exports = {
         loaders: [ 'babel' ], 
         exclude: /node_modules/
       },
+      { 
+        test: /\.css$/,
+        loader: 'style!css'
+      },
       {
-        test: /\.(css|scss)$/,
+        test: /\.scss$/,
         loader: 'style!css?sourceMap&modules&localIdentName=[name]__[local]___[hash:base64:5]!sass'
       },
       {
-        test: /\.(ttf|eot|svg|woff|woff2)/,
+        test: /\.(ttf|eot|svg|woff|woff2)$/,
         loader: 'url?limit=10000'
       },
       {
