@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { Navigation, Link } from 'react-toolbox';
+import { Navigation, Link, IconButton } from 'react-toolbox';
+
+import InviteButton from './InviteButton';
+import DrawerButton from './DrawerButton';
 
 import styles from './Tools.scss';
 
@@ -11,9 +14,9 @@ export default class Tools extends Component {
 	render() {
 		return (
 		  <Navigation type='horizontal' className={styles.tools}>
-		    <Link href='/' label='user' className={styles.user} />
-		    <Link href='/' icon='group_add' />
-		    <Link href='/' icon='dehaze' />
+		  	<span className={styles.user}>user</span>
+		  	<InviteButton />
+		  	<DrawerButton />
 		  </Navigation>
 		)
 	}
