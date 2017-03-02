@@ -27,10 +27,10 @@ export default class InviteButton extends Component {
           onOverlayClick={this.handleToggle}
           title='Invite people to your retrospective'
         >
-          <p style={{ 'margin-bottom': '10px' }}>To invite people to your retrospected session, simply send them the following URL:</p>
+          <p style={{ marginBottom: '10px' }}>To invite people to your retrospected session, simply send them the following URL:</p>
           <strong>{getCurrentUrl()}</strong>
 
-          <div style={{ 'margin-top': '15px' }}>
+          <div style={{ marginTop: '15px' }}>
 		        <CopyToClipboard text={getCurrentUrl()}>
 		          <Button icon='content_copy' label='Copy URL to Clipboard' accent  />
 		        </CopyToClipboard>

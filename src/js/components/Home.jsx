@@ -1,46 +1,12 @@
 import React, { Component } from 'react';
-import { Card, CardMedia, CardText, Tab, Tabs, Button, List, ListItem, Dropdown } from 'react-toolbox';
+import { Card, CardMedia, CardText, Tab, Tabs, Button, List, ListItem } from 'react-toolbox';
 import 'flag-icon-css/css/flag-icon.min.css';
 
 import Banner from './draw/Banner';
+import LanguagePicker from './LanguagePicker';
 import { fetchHome } from '../actions/home';
 
 import styles from './Home.scss';
-
-const languageConfig = [
-  { value: 'en', iso: 'gb', name: 'English', englishName: 'English' },
-  { value: 'cn', iso: 'cn', name: '简体中文', englishName: 'Simplified Chinese' },
-  { value: 'mo', iso: 'mo', name: '繁体中文', englishName: 'Traditional Chinese' }
-];
-
-const languageTemplate = item => {
-  const containerStyle = {
-    display: 'flex',
-    flexDirection: 'row'
-  };
-
-  const iconStyle = {
-    display: 'flex',
-    width: '3rem',
-    height: '3rem',
-    marginRight: '1rem'
-  };
-
-  const contentStyle = {
-    display: 'flex',
-    flexDirection: 'column'
-  };
-
-  return (
-    <div style={containerStyle}>
-      <span style={iconStyle} className={`flag-icon flag-icon-${item.iso}`}></span>
-      <div style={contentStyle}>
-        <strong>{item.name}</strong>
-        <small>{item.englishName}</small>
-      </div>
-    </div>
-  );
-};
 
 export default class Home extends Component {
 	static propTypes = {
@@ -49,7 +15,7 @@ export default class Home extends Component {
 
 	constructor(props) {
 		super(props);
-		this.state = { tabIndex: 0, languageSelected: 'en' };
+		this.state = { tabIndex: 0 };
 		const { dispatch } = this.props;
 		dispatch(fetchHome());
 	}
@@ -99,14 +65,9 @@ export default class Home extends Component {
 	renderAdvancedTab() {
 		return (
 			<Tab label='ADVANCED' key="advanced">
-				<div style={ { 'max-width': '18rem' } }>
-	        <Dropdown
-	          source={languageConfig}
-	          onChange={value => this.setState({ languageSelected: value })}
-	          label='Choose a language'
-	          template={languageTemplate}
-	          value={this.state.languageSelected} />
-	        <Button icon='power_settings_new' label='Bookmark' accent />
+				<div style={ { maxWidth: '18rem' } }>
+					<LanguagePicker />
+					<Button icon='power_settings_new' label='LOGOUT' accent />
 	      </div>
 			</Tab>
 		);
