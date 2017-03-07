@@ -7,6 +7,8 @@ import configureStore from './store/configureStore';
 
 import LayoutContainer from './containers/LayoutContainer';
 import HomeContainer from './containers/HomeContainer';
+import LoginContainer from './containers/LoginContainer';
+import SessionContainer from './containers/SessionContainer';
 import NotFound from './components/NotFound';
 
 import 'react-toolbox/lib/commons';
@@ -20,6 +22,8 @@ export default class App extends Component {
 				<Router history={browserHistory}>
 					<Route path="/" component={LayoutContainer}>
 						<IndexRoute component={HomeContainer} />
+						<Route path="login" component={LoginContainer} />
+						<Route path="session/:id" component={SessionContainer} />
 					</Route>
 					<Route path="*" component={NotFound} status={404} />
 				</Router>

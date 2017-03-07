@@ -31,7 +31,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        loader: 'style!css?localIdentName=[name]__[local]___[hash:base64:5]!sass'
+        loader: 'style!css?localIdentName=[name]--[local]--[hash:base64:5]!sass'
       },
       {
         test: /\.(ttf|eot|svg|woff|woff2)/,

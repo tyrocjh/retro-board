@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, CardMedia, CardText, Tab, Tabs, Button, List, ListItem } from 'react-toolbox';
+import { Card, CardMedia, CardText, Tab, Tabs, Button, List, ListItem, Link } from 'react-toolbox';
 import 'flag-icon-css/css/flag-icon.min.css';
 
 import Banner from './draw/Banner';
@@ -20,20 +20,13 @@ export default class Home extends Component {
 		dispatch(fetchHome());
 	}
 
-	renderTabs() {
-		return [
-			this.renderCreateTab(),
-			this.renderPreviousTab(),
-			this.renderAdvancedTab()
-		];
-	}
-
 	renderCreateTab() {
 		return (
 			<Tab label='CREATE' key="create">
 				<h4>Welcome to Retrospected</h4>
 				<p style={ { margin: '0.5rem 0 1rem' } }>Click below and start retrospecting:</p>
 				<Button label='Create a new session' accent raised />
+				<Link href="#/components/link" label="Explore" />
 			</Tab>
 		);
 	}
@@ -71,6 +64,14 @@ export default class Home extends Component {
 	      </div>
 			</Tab>
 		);
+	}
+
+	renderTabs() {
+		return [
+			this.renderCreateTab(),
+			this.renderPreviousTab(),
+			this.renderAdvancedTab()
+		];
 	}
 
 	render() {

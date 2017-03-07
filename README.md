@@ -1,8 +1,12 @@
 # retro-board
 
 
-## questions
+## todo
 
+* mobile version
+* font family not work
+* abstract form (input...)
+* micro service
 * module.hot works or not?
 * it seems that after changing the code, the page will refresh?
 
