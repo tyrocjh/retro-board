@@ -3,6 +3,7 @@
 
 ## todo
 
+* redirect deprecated
 * mobile version
 * font family not work
 * abstract form (input...)

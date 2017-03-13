@@ -50,5 +50,13 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx', '.scss'],
   },
-  devtool: 'eval'
+  devtool: 'eval',
+  plugins: [
+    new webpack.NoErrorsPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('development'),
+      __DEVELOPMENT__: true,
+      __DEVTOOLS__: true
+    })
+  ]
 };

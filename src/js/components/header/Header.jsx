@@ -18,7 +18,7 @@ export default class Header extends Component {
 					<p className={styles.subTitle}>A good way of ranting in an Agile way</p>
 				</Link>
 
-				<Tools />
+				<Tools username={this.props.username} />
 			</AppBar>
 		)
 	}

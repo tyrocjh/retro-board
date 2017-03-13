@@ -26,7 +26,6 @@ export default class Home extends Component {
 				<h4>Welcome to Retrospected</h4>
 				<p style={ { margin: '0.5rem 0 1rem' } }>Click below and start retrospecting:</p>
 				<Button label='Create a new session' accent raised />
-				<Link href="#/components/link" label="Explore" />
 			</Tab>
 		);
 	}

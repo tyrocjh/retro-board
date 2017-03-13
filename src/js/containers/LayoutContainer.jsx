@@ -1,17 +1,32 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Layout, Panel } from 'react-toolbox';
 
-import Header from '../components/header/Header';
+import HeaderContainer from './HeaderContainer';
+import { autoLogin } from '../actions/user';
 
-export default class LayoutContainer extends Component {
+class LayoutContainer extends Component {
+  componentDidMount() {
+    this.props.onAutoLogin();
+  }
+
   render() {
     return (
       <Layout>
         <Panel>
-        	<Header />
+        	<HeaderContainer />
           {React.cloneElement(this.props.children, { key: location.pathname })}
         </Panel>
       </Layout>
     )
   }
 }
+
+const mapStateToProps = state => ({
+});
+
+const mapDispatchToProps = dispatch => ({
+  onAutoLogin: () => dispatch(autoLogin())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(LayoutContainer);

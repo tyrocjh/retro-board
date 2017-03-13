@@ -1,33 +1,56 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Input, Button } from 'react-toolbox';
+import trim from 'lodash/trim';
 
 import LanguagePicker from '../LanguagePicker';
 import styles from './Login.scss';
 
-export default class Login extends Component {
+class Login extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { username: '', email: '', password: '' };
+		this.state = { username: '' };
 	}
 
-  handleChange = (name, value) => {
-    this.setState({ [name]: value });
-  }
+	handleRedirect = () => {
+		let propState = this.props.location.state;
+		let defaultPrevPath = '/admin'
+		let prevPath = propState && propState.prevPath;
+		this.props.history.replaceState(null, prevPath || defaultPrevPath);
+	}
+
+	handleClick = () => {
+		let username = trim(this.state.username);
+		if(username) {
+			this.props.onLogin(username);
+			this.handleRedirect();
+		}
+	}
 
 	render() {
 		return (
 			<div className={styles.login}>
 				<LanguagePicker />
 
-				<Input type='text' label='username' icon='person' value={this.state.username} 
-					onChange={this.handleChange.bind(this, 'username')} />
-				<Input type='email' label='email' icon='email' value={this.state.email} 
-					onChange={this.handleChange.bind(this, 'email')} />
-				<Input type='password' label='password' icon='lock_outline' value={this.state.password} 
-					onChange={this.handleChange.bind(this, 'password')} />
+				<Input type='text' icon='person'
+					label={this.props.msg.inputLabel} value={this.state.username} 
+					onChange={value => this.setState({ username: value })} />
 
-				<Button label={`LET'S START`} accent raised />
+				<Button accent raised label={this.props.msg.buttonLabel}
+					onClick={this.handleClick} />
 			</div>
 		);
 	}
 }
+
+Login.propTypes = {
+  onLogin: PropTypes.func.isRequired
+};
+
+Login.defaultProps = {
+  msg: {
+    inputLabel: 'Who are you exactly? Enter your name here',
+    buttonLabel: 'Let\'s start'
+  }
+};
+
+export default Login;

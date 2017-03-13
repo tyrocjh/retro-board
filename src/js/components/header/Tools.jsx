@@ -7,14 +7,10 @@ import DrawerButton from './DrawerButton';
 import styles from './Tools.scss';
 
 export default class Tools extends Component {
-	constructor(props) {
-		super(props);
-	}
-
 	render() {
 		return (
 		  <Navigation type='horizontal' className={styles.tools}>
-		  	<span className={styles.user}>user</span>
+		  	<span className={styles.user}>{this.props.username}</span>
 		  	<InviteButton />
 		  	<DrawerButton />
 		  </Navigation>

@@ -47,7 +47,8 @@ module.exports = {
     new webpack.NoErrorsPlugin(),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
-      __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'false'))
+      __DEVELOPMENT__: false,
+      __DEVTOOLS__: false
     }),
     new uglifyJsPlugin({
       compress: {
@@ -62,5 +63,5 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx', '.scss'],
   },
-  devtool: 'source-map'
+  devtool: 'source-map',
 };
