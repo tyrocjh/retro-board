@@ -6,9 +6,14 @@ import HeaderContainer from './HeaderContainer';
 import { autoLogin } from '../actions/user';
 
 class LayoutContainer extends Component {
-  componentDidMount() {
+  constructor(props) {
+    super(props);
     this.props.onAutoLogin();
   }
+
+  // componentDidMount() {
+  //   this.props.onAutoLogin(); 
+  // }
 
   render() {
     return (

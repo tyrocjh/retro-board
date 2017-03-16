@@ -1,4 +1,4 @@
-import { LOGIN, AUTOLOGIN } from '../constants/ActionTypes';
+import { LOGIN, AUTO_LOGIN } from '../constants/ActionTypes';
 import { setUserToLS, getUserFromLS } from '../utils';
 
 export function login(user) {
@@ -14,7 +14,7 @@ export function autoLogin() {
 	let user = getUserFromLS();
 
 	return {
-		type: AUTOLOGIN,
+		type: AUTO_LOGIN,
 		user
 	}
 }

@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import 'react-toolbox/lib/commons';
 
+import { init } from './middlewares/socketio';
 import { getUserFromLS } from './utils';
 import configureStore from './store/configureStore';
 import LayoutContainer from './containers/LayoutContainer';
@@ -20,6 +21,8 @@ const requireLogin = function(nextState, replaceState) {
 	}
 }
 
+init();
+
 export default class App extends Component {
 	renderRoutes() {
 		return (
@@ -27,7 +30,7 @@ export default class App extends Component {
 				<Route path="/" component={LayoutContainer}>
 					<IndexRoute component={HomeContainer} onEnter={requireLogin} />
 					<Route path="login" component={LoginContainer} />
-					<Route path="session/:id" component={SessionContainer} onEnter={requireLogin} />
+					<Route path="session/:sessionId" component={SessionContainer} onEnter={requireLogin} />
 				</Route>
 				<Route path="*" component={NotFound} status={404} />
 			</Router>

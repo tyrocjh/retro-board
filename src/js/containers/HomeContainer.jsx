@@ -11,12 +11,8 @@ class HomeContainer extends Component {
   }
 }
 
-function mapStateToProps(state) {
-	const { home } = state;
+const mapStateToProps = state => ({});
 
-	return {
-		home
-	}
-}
+const mapDispatchToProps = dispatch => ({});
 
-export default connect(mapStateToProps)(HomeContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(HomeContainer);

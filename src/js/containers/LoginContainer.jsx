@@ -6,7 +6,6 @@ import { login } from '../actions/user';
 
 class LoginContainer extends Component {
   render() {
-  	console.info('render: ', this.props);
     return (
       <Login {...this.props} />
     )

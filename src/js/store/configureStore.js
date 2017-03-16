@@ -1,11 +1,13 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import rootReducer from '../reducers';
+import { socketIoMiddleware } from '../middlewares/socketio';
 import DevTools from '../components/DevTools';
 
 export default function configureStore(initialState) {
   const middlewares = [];
   middlewares.push(thunkMiddleware);
+  middlewares.push(socketIoMiddleware);
 
   let createStoreWithMiddleware = applyMiddleware(...middlewares);
 

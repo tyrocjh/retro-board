@@ -1,0 +1,4 @@
+module.exports = {
+	JOIN_SESSION: 'JOIN_SESSION',
+	REVEIVE_BOARD: 'REVEIVE_BOARD'
+}

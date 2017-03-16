@@ -5,10 +5,10 @@
   "main": "src/js/main.jsx",
   "scripts": {
     "start-ui": "webpack-dev-server --config ./webpack.dev.config.js --progress --inline --hot",
-    "start-server": "nodemon ./server.js",
+    "start-server": "nodemon ./server",
     "build": "export NODE_ENV=production & webpack -p --config ./webpack.prod.config.js",
     "postinstall": "npm run build",
-    "start": "NODE_ENV=production node server.js"
+    "start": "NODE_ENV=production node ./server"
   },
   "repository": {
     "type": "git",
@@ -47,6 +47,9 @@
     "redux": "^3.6.0",
     "redux-thunk": "^2.1.0",
     "sass-loader": "^4.0.2",
+    "shortid": "^2.2.8",
+    "socket.io": "^1.7.3",
+    "socket.io-client": "^1.7.3",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.2"

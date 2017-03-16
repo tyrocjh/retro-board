@@ -1,23 +1,17 @@
 import React, { Component } from 'react';
+import { browserHistory } from 'react-router'
 import { Card, CardMedia, CardText, Tab, Tabs, Button, List, ListItem, Link } from 'react-toolbox';
+import shortid from 'shortid';
 import 'flag-icon-css/css/flag-icon.min.css';
 
 import Banner from './draw/Banner';
 import LanguagePicker from './LanguagePicker';
-import { fetchHome } from '../actions/home';
-
 import styles from './Home.scss';
 
 export default class Home extends Component {
-	static propTypes = {
-	  home: React.PropTypes.object.isRequired
-	}
-
 	constructor(props) {
 		super(props);
 		this.state = { tabIndex: 0 };
-		const { dispatch } = this.props;
-		dispatch(fetchHome());
 	}
 
 	renderCreateTab() {
@@ -25,7 +19,8 @@ export default class Home extends Component {
 			<Tab label='CREATE' key="create">
 				<h4>Welcome to Retrospected</h4>
 				<p style={ { margin: '0.5rem 0 1rem' } }>Click below and start retrospecting:</p>
-				<Button label='Create a new session' accent raised />
+				<Button label='Create a new session' accent raised 
+					onClick={() => browserHistory.push(`/session/${shortid.generate()}`)} />
 			</Tab>
 		);
 	}
@@ -85,7 +80,6 @@ export default class Home extends Component {
 				    </CardMedia>
 
 				    <CardText>
-				    	{ home.data }
 				      <Tabs index={this.state.tabIndex} onChange={tabIndex => this.setState({ tabIndex })}>
 				      	{ this.renderTabs() }
 				      </Tabs>
