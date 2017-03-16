@@ -3,6 +3,7 @@
 
 ## todo
 
+* learn restful & jwt
 * index page loading
 * user avator
 * redirect deprecated
