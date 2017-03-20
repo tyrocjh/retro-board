@@ -29,20 +29,41 @@ db().then(store => {
 	  res.send({ message: err.message });
 	});
 
-	const joinSession = (socket, data) => {
-	  socket.join(data.sessionId, () => {
-	    socket.broadcast.to(data.sessionId).emit(actionTypes.REVEIVE_BOARD, 'blablabla...')
+	const persist = session => store.set(session)
+
+	const sendToSelf = (socket, action, payload) => {
+		socket.emit(action, payload);
+	}
+
+	const sendToAll = (socket, sessionId, action, payload) => {
+		socket.broadcast.to(sessionId).emit(action, payload);
+	}
+
+	const joinSession = (socket, session, payload) => {
+		sendToSelf(socket, actionTypes.REVEIVE_SESSION, session);
+
+	  socket.join(session.id, () => {
+	  	// sendToAll();
 	  });
 	}
 
+	const addPost = (socket, session, payload) => {
+		session.posts.push(payload);
+		persist(session);
+		sendToAll(socket, session.id, actionTypes.REVEIVE_ADD_POST, payload);
+	}
+
 	const actions = [
-		{ type: actionTypes.JOIN_SESSION, handler: joinSession }
+		{ type: actionTypes.JOIN_SESSION, handler: joinSession },
+		{ type: actionTypes.ADD_POST, handler: addPost }
 	]
 
 	io.on('connection', function(socket){
 	  actions.forEach(action => {
 	  	socket.on(action.type, data => {
-	  		action.handler(socket, data);
+				store.get(data.sessionId).then(session => {
+					action.handler(socket, session, data.payload);
+				});
 	  	});
 	  });
 	});

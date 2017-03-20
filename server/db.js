@@ -24,11 +24,35 @@ const sessionShema = new mongoose.Schema({
 
 const Session = mongoose.model('Session', sessionShema);
 
-const get = () => sessionId => {
-}
+const get = () => sessionId => new Promise((resolve, reject) => {
+	Session.findOne({id: sessionId}, (err, session) => {
+		if(err) {
+			console.log(err);
+			reject(err);
+		} else {
+			if(session) {
+				resolve(session);
+			} else {
+				resolve({
+					id: sessionId,
+					name: '',
+					posts: []
+				});
+			}
+		}
+	});
+});
 
-const set = () => session => {
-}
+const set = () => session => new Promise((resolve, reject) => {
+	Session.findOneAndUpdate({ id: session.id }, session, { upsert: true }, (err, session) => {
+		if(err) {
+			console.log(err);
+			reject(err);
+		} else {
+			resolve(session);
+		}
+	});
+})
 
 module.exports = () => {
 	mongoose.connect(config.database);

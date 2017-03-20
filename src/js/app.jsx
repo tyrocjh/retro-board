@@ -21,7 +21,7 @@ const requireLogin = function(nextState, replaceState) {
 	}
 }
 
-init();
+init(store);
 
 export default class App extends Component {
 	renderRoutes() {

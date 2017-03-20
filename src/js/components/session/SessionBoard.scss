@@ -1,27 +1,5 @@
-.sessionBoardContainer {
+.sessionBoard {
 	display: flex;
 	justify-content: space-around;
 	margin-bottom: 20px;
-}
-
-.sessionBoard {
-	flex-basis: 30%;
-}
-
-.well {
-	[data-react-toolbox="card"] {
-	 	background-color: #E8F5E9;
-	}
-}
-
-.notWell {
-	[data-react-toolbox="card"] {
-	 	background-color: #FFEBEE;
-	}
-}
-
-.ideas {
-	[data-react-toolbox="card"] {
-	 	background-color: #FFFDE7;
-	}
 }

@@ -1,0 +1,25 @@
+.postColumn {
+	flex-basis: 30%;
+
+	[data-react-toolbox="card"] {
+		margin-bottom: 20px;
+	}
+}
+
+.well {
+	[data-react-toolbox="card"] {
+	 	background-color: #E8F5E9;
+	}
+}
+
+.notWell {
+	[data-react-toolbox="card"] {
+	 	background-color: #FFEBEE;
+	}
+}
+
+.ideas {
+	[data-react-toolbox="card"] {
+	 	background-color: #FFFDE7;
+	}
+}

@@ -1,19 +1,19 @@
 import io from 'socket.io-client';
-import { JOIN_SESSION, REVEIVE_BOARD } from '../constants/ActionTypes';
+import { JOIN_SESSION, REVEIVE_SESSION, ADD_POST, REVEIVE_ADD_POST } from '../constants/ActionTypes';
 
 let socket = null;
 
-export const init = () => {
+export const init = store => {
 	socket = io();
 
   let actions = [
-  	REVEIVE_BOARD,
+  	REVEIVE_SESSION,
+    REVEIVE_ADD_POST
   ];
 
   actions.forEach(action => {
-  	socket.on(action, data => {
-  		console.info(action);
-  		console.info(data);
+  	socket.on(action, payload => {
+      store.dispatch({ type: action, payload });
   	});
   });
 }
@@ -23,14 +23,16 @@ export const socketIoMiddleware = store => next => action => {
 
   let actions = [
   	JOIN_SESSION,
+    ADD_POST
   ];
 
   if(actions.indexOf(action.type) > -1) {
   	let state = store.getState();
   	let sessionId = state.session.id;
-  	
+
   	socket.emit(action.type, {
-  		sessionId: sessionId
+  		sessionId: sessionId,
+      payload: action.payload
   	});
   }
 

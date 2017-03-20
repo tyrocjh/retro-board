@@ -1,76 +1,65 @@
-import React, { Component } from 'react';
-import classNames from 'classnames';
-import { Input, Button, Card, CardText, CardActions } from 'react-toolbox';
+import React, { Component, PropTypes } from 'react';
+import _ from 'lodash';
 
+import PostColumn from './PostColumn';
 import styles from './SessionBoard.scss';
 
-export default class SessionBoard extends Component {
-	constructor(props) {
-		super(props);
-		this.state = { well: '', notWell: '', ideas: '' };
-	}
+class SessionBoard extends Component {
+	renderPostColumn = postType => {
+		const { addPost, currentUser } = this.props;
 
-	renderWellBoard() {
 		return (
-			<div key="well" className={classNames(styles.sessionBoard, styles.well)}>
-				<Input type='text' label='What went well?' icon='sentiment_very_satisfied' value={this.state.well} 
-					onChange={(value) => this.setState({well: value})} />
-
-			  <Card raised>
-			    <CardText>blablabla...</CardText>
-			    <CardActions>
-			      <Button label="DELETE" icon="delete_forever" accent raised />
-			    </CardActions>
-			  </Card>
-			</div>
+			<PostColumn 
+				key={postType.type}
+				addPost={addPost}
+				currentUser={currentUser}
+				posts={postType.posts}
+				type={postType.type}
+				placeholder={postType.placeholder}
+				icon={postType.icon} />
 		);
-	}
-
-	renderImproveBoard() {
-		return (
-			<div key="not-well" className={classNames(styles.sessionBoard, styles.notWell)}>
-				<Input type='text' label='What could be improved?' icon='sentiment_very_dissatisfied' value={this.state.notWell} 
-					onChange={(value) => this.setState({notWell: value})} />
-
-			  <Card raised>
-			    <CardText>blablabla...</CardText>
-			    <CardActions>
-			      <Button label="DELETE" icon="delete_forever" accent raised />
-			    </CardActions>
-			  </Card>
-			</div>
-		);
-	} 
-
-	renderIdeaBoard() {
-		return (
-			<div key="ideas" className={classNames(styles.sessionBoard, styles.ideas)}>
-				<Input type='text' label='A brilliant idea to share?' icon='lightbulb_outline' value={this.state.ideas} 
-					onChange={(value) => this.setState({idea: value})} />
-
-			  <Card raised>
-			    <CardText>blablabla...</CardText>
-			    <CardActions>
-			      <Button label="DELETE" icon="delete_forever" accent raised />
-			    </CardActions>
-			  </Card>
-			</div>
-		);
-	}
-
-	renderBoards() {
-		return [
-			this.renderWellBoard(),
-			this.renderImproveBoard(),
-			this.renderIdeaBoard()
-		];
 	}
 
 	render() {
+		const { msg, posts } = this.props;
+
+		const postTypes = [{
+			type: 'well',
+			placeholder: msg.well,
+			icon: 'sentiment_very_satisfied',
+			posts: _.filter(posts, { 'postType': 'well' })
+		}, {
+			type: 'notWell',
+			placeholder: msg.notWell,
+			icon: 'sentiment_very_dissatisfied',
+			posts: _.filter(posts, { 'postType': 'notWell' })
+		}, {
+			type: 'idea',
+			placeholder: msg.idea,
+			icon: 'lightbulb_outline',
+			posts: _.filter(posts, { 'postType': 'idea' })
+		}];
+
 		return (
-			<div className={styles.sessionBoardContainer}>
-				{this.renderBoards()}
+			<div className={styles.sessionBoard}>
+				{ postTypes.map(this.renderPostColumn) }
 			</div>
 		);
 	}
 }
+
+SessionBoard.propTypes = {
+  addPost: PropTypes.func.isRequired,
+  posts: PropTypes.array.isRequired,
+  currentUser: PropTypes.string.isRequired
+};
+
+SessionBoard.defaultProps = {
+  msg: {
+    well: 'What went well?',
+    notWell: 'What could be improved?',
+    idea: 'A brilliant idea to share?'
+  }
+};
+
+export default SessionBoard;

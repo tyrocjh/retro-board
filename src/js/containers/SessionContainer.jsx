@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Session from '../components/session/Session';
-import { createSession, joinSession } from '../actions/session';
+import { createSession, joinSession, addPost } from '../actions/session';
 
 class SessionContainer extends Component {
   componentDidMount() {
@@ -18,13 +18,16 @@ class SessionContainer extends Component {
 }
 
 const mapStateToProps = state => ({
+  user: state.user.username,
+  posts: state.session.posts,
 	sessionId: state.session.id,
 	sessionName: state.session.name
 });
 
 const mapDispatchToProps = dispatch => ({
 	onCreateSession: id => dispatch(createSession(id)),
-	onAutoJoin: () => dispatch(joinSession())
+	onAutoJoin: () => dispatch(joinSession()),
+  onAddPost: (type, user, content) => dispatch(addPost(type, user, content))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SessionContainer);

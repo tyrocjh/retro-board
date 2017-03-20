@@ -5,10 +5,12 @@ import SessionBoard from './SessionBoard'
 
 export default class Session extends Component {
 	render() {
+		const { onAddPost, user, posts } = this.props;
+
 		return (
 			<div>
 				<SessionName />
-				<SessionBoard />
+				<SessionBoard addPost={onAddPost} currentUser={user} posts={posts} />
 			</div>
 		);
 	}
